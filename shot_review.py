@@ -1,4 +1,4 @@
-"""截图审查：把一张 UI 截图做成"带标注的检查图 + 指标报告"。
+﻿"""截图审查：把一张 UI 截图做成"带标注的检查图 + 指标报告"。
 
 用法:
     python shot_review.py <shot.png> [--out-dir 目录]
@@ -9,6 +9,12 @@
 """
 import os
 import sys
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")   # Windows CI 默认 cp1252，中文会崩
+except Exception:
+    pass
+
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -88,3 +94,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

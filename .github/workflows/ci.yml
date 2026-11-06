@@ -1,4 +1,4 @@
-name: ci
+﻿name: ci
 
 on:
   push:
@@ -31,4 +31,7 @@ jobs:
           }
 
       - name: Review script smoke test on example
+        env:
+          PYTHONIOENCODING: utf-8
         run: python shot_review.py examples/prologue.png --out-dir examples/_out
+
