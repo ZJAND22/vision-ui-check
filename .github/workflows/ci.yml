@@ -33,5 +33,6 @@ jobs:
       - name: Review script smoke test on example
         env:
           PYTHONIOENCODING: utf-8
-        run: python shot_review.py examples/prologue.png --out-dir examples/_out
+        run: python shot_review.py examples/supertuxkart_menu.png --out-dir examples/_out
+
 

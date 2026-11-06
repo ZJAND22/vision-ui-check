@@ -96,3 +96,11 @@ MIT
 
 做三件事：Python 语法检查、PowerShell 脚本解析、用 `examples/prologue.png` 跑一遍审查脚本。
 等价于 CI 的检查项，本地就能跑，不需要 GitHub 的 `workflow` 权限。
+
+## 示例输出
+
+`examples/` 里有对一张 1280×720 游戏菜单截图跑出来的结果：
+
+- `supertuxkart_menu.png` — 原图（来源与授权见 `examples/CREDITS.md`）
+- `supertuxkart_menu_annot.png` — 标注图（九宫格 + 每格清晰度/亮度）
+- `supertuxkart_menu_report.md` — 指标报告
