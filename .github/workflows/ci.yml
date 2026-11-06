@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install pillow numpy
+
+      - name: Python syntax check
+        run: python -m py_compile shot_review.py
+
+      - name: PowerShell parse check
+        shell: pwsh
+        run: |
+          foreach ($f in @("capture_window.ps1", "ui_shot.ps1")) {
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $f), [ref]$null, [ref]$errors) | Out-Null
+            if ($errors.Count -gt 0) { Write-Error "$f parse errors: $errors"; exit 1 }
+          }
+
+      - name: Review script smoke test on example
+        run: python shot_review.py examples/prologue.png --out-dir examples/_out
