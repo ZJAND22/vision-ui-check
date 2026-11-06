@@ -87,3 +87,12 @@ shots/
 ## License
 
 MIT
+
+## 自检（不依赖 CI）
+
+```powershell
+.\check.ps1
+```
+
+做三件事：Python 语法检查、PowerShell 脚本解析、用 `examples/prologue.png` 跑一遍审查脚本。
+等价于 CI 的检查项，本地就能跑，不需要 GitHub 的 `workflow` 权限。
