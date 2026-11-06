@@ -1,0 +1,7 @@
+shots/
+*.png
+*.jpg
+!examples/*.png
+__pycache__/
+*.pyc
+.venv/
